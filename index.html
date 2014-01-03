@@ -25,29 +25,32 @@
 <![endif]-->
 
 <style type="text/css">
+    body, html { height: 100%; }
     body {
-        background: #ededed;
+        display: flex;
+        flex-direction: column;
     }
-    header {
-        padding: 2em 0;
-        margin-bottom: 2em;
+
+    #top {
+        flex: 2;
+        min-height: 2.5em;
     }
-    header h1 {
-        font-size: 2em;
+
+    #middle {
+        flex: 8;
     }
-    header h1 small:before  {
-        content: "|";
-        margin: 0 0.5em;
-        font-size: 1.6em;
+
+    #mapCanvas {
+        display: block;
+        height: 100%;
     }
-    footer {
-        background: #ccc;
-        color: #0003;
+
+    #bottom {
+        flex: 1;
     }
-    footer p {
-        padding: 0.5em 1em 0.5em 0;
-        margin: 0;
-    }
+
+    .had-hash .hide-when-hash { display: none; }
+    .no-had-hash .hide-when-no-hash { display: none; }
 </style>
 
 </head>
@@ -60,31 +63,62 @@
     </nav>
 </div>-->
 
-<div class="ink-grid">
-    <header>
-        <h1>Amostra-me aonde</h1>
-        <h3>Mostra ao pessoal onde ficam cenas e tal</your-mom>
-        <hr>
-    </header>
+<header id=top>
+    <h1>Amostra-me aonde</h1>
+    <h3>Mostra ao pessoal onde ficam cenas e tal</your-mom>
+</header>
+
+<div id=middle>
+    <div id=mapCanvas></div>
 </div>
 
-<footer>
+<footer id=bottom>
     <div class="ink-grid">
-        <nav class="ink-navigation push-left medium-66 small-100 small-push-left">
-            <ul class="menu horizontal">
-                <li><a href="#">Footer item</a></li>
-            </ul>
-        </nav>
         <div class="push-right medium-33 small-100">
-            <p>some text</p>
+            <p class=hide-when-hash>Encontra o sítio, faz clique direito no mapa e clica no marcador.</p>
         </div>
     </div>
 </footer>
+
+<div id=modalText class=hide-all>
+    <div class="modal-header">
+        <button class="modal-close ink-dismiss"></button>
+        <h2 class=hide-when-hash>Podes enviar</h2>
+        <h2 class=hide-when-no-hash>Partilharam um local contigo!</h2>
+    </div>
+    <div class="modal-body large ">
+        <center class="hide-when-hash">
+            <p class="vspace">
+                <span class="ink-label info"><i class="icon-info"></i></span>
+
+                <span>Partilha o link abaixo para mostrares onde fica:</span>
+            </p>
+
+            <a id=modalLink class=large target=_blank></a>
+        </center>
+        <center class="hide-when-no-hash">
+            <p id=address class=large></p>
+            <p id=coords class=small></p>
+            <img id=streetView>
+
+            <p>
+                <a href="" id=directions>Como lá chegar?</a>
+            </p>
+        </center>
+    </div>
+    <div class="modal-footer">
+        <div class="push-right">
+            <button class="ink-button ink-dismiss">Ok</button>
+        </div>
+    </div>
+</div>
+
 
 <script type="text/javascript" src="js/holder.js"></script>
 <script type="text/javascript" src="js/ink.min.js"></script>
 <script type="text/javascript" src="js/ink-ui.min.js"></script>
 <script type="text/javascript" src="js/autoload.js"></script>
+<script src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
 <script src="script.js"></script>
 
 </body></html>
