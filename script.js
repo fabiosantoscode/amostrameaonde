@@ -5,7 +5,7 @@ Ink.loadScript = function () { } // no dynamic loading today!
 
 var streetViewSvc = {
     endPoint: 'http://maps.googleapis.com/maps/api/streetview?size=300x300&sensor=false',
-    apiKey: 'notsureifshouldshow'
+    apiKey: 'AIzaSyAbXyIappmCODLfBjHDrSg0sxTd8IQK5qM'
 }
 
 var googleMapsDirectionsLink = 'https://maps.google.com/maps?daddr='
