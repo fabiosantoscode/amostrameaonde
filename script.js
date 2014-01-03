@@ -111,6 +111,9 @@ function initVisitMode() {
             onDismiss: function () {
                 setHadHash('');
                 initShareMode();
+                Ink.requireModules(['aa.marker_1'], function (marker) {
+                    marker.setVisible(true);
+                })
             },
             width: '800px'
         })
